@@ -1,6 +1,8 @@
 {
 	"author": "melusc",
-	"bin": "dist/index.js",
+	"bin": {
+		"clean-package": "dist/index.js"
+	},
 	"dependencies": {
 		"json-stable-stringify": "^1.2.1"
 	},
@@ -25,7 +27,10 @@
 	],
 	"license": "MIT",
 	"name": "@lusc/clean-package",
-	"repository": "melusc/cli-interval",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/melusc/cli-interval.git"
+	},
 	"scripts": {
 		"fmt": "prettier -w . && eslint --fix",
 		"build": "tsc"
