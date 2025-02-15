@@ -1,8 +1,6 @@
 {
 	"author": "melusc",
-	"bin": {
-		"clean-package": "dist/index.js"
-	},
+	"bin": "dist/index.js",
 	"dependencies": {
 		"json-stable-stringify": "^1.2.1"
 	},
