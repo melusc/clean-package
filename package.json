@@ -5,6 +5,8 @@
 		"json-stable-stringify": "^1.2.1"
 	},
 	"devDependencies": {
+		"@lusc/eslint-config": "^4.2.0",
+		"eslint": "^9.20.1",
 		"prettier": "^3.5.1"
 	},
 	"files": [
