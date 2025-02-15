@@ -31,8 +31,7 @@
 	"repository": "melusc/cli-interval",
 	"scripts": {
 		"fmt": "prettier -w . && eslint --fix",
-		"build": "tsc",
-		"prepublish": "yarn build"
+		"build": "tsc"
 	},
 	"type": "module",
 	"version": "0.0.0",
