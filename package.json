@@ -27,7 +27,7 @@
 	"name": "@lusc/clean-package",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/melusc/cli-interval.git"
+		"url": "https://github.com/melusc/clean-package"
 	},
 	"scripts": {
 		"fmt": "prettier -w . && eslint --fix",
