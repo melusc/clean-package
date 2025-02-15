@@ -7,7 +7,7 @@ import stableStringify from 'json-stable-stringify';
 const argvPaths = argv[0] === 'clean-package' ? argv.slice(1) : argv.slice(2);
 const pathsToRemove = argvPaths.map(s => s.split('.'));
 
-const packageJsonPath = path.join(cwd(), 'package.json')
+const packageJsonPath = path.join(cwd(), 'package.json');
 
 function removePath(path: string[], object: Record<string, unknown>) {
 	if (path.length === 0) {
