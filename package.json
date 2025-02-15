@@ -25,9 +25,6 @@
 	],
 	"license": "MIT",
 	"name": "@lusc/clean-package",
-	"publishConfig": {
-		"access": "public"
-	},
 	"repository": "melusc/cli-interval",
 	"scripts": {
 		"fmt": "prettier -w . && eslint --fix",
