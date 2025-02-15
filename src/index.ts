@@ -1,11 +1,12 @@
 import {readFile, writeFile} from 'node:fs/promises';
 import path from 'node:path';
-import {argv, cwd} from 'node:process';
+import {cwd} from 'node:process';
 
 import stableStringify from 'json-stable-stringify';
 
-const argvPaths = argv[0] === 'clean-package' ? argv.slice(1) : argv.slice(2);
-const pathsToRemove = argvPaths.map(s => s.split('.'));
+import {options, positionals} from './cli.ts';
+
+const pathsToRemove = positionals.map(s => s.split('.'));
 
 const packageJsonPath = path.join(cwd(), 'package.json');
 
@@ -56,8 +57,14 @@ for (const path of pathsToRemove) {
 	removePath(path, packageJson);
 }
 
-const outPackageJsonRaw = stableStringify(packageJson, {
-	space: '\t',
-})!;
+const outPackageJsonStringified = options.sort
+	? stableStringify(packageJson, {
+			space: options.indent,
+		})!
+	: JSON.stringify(packageJson, undefined, options.indent);
 
-await writeFile(packageJsonPath, outPackageJsonRaw);
+if (options.dryRun) {
+	console.log(outPackageJsonStringified);
+} else {
+	await writeFile(packageJsonPath, outPackageJsonStringified);
+}

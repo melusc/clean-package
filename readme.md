@@ -26,6 +26,20 @@ npm publish
 git checkout HEAD -- package.json
 ```
 
+## Options
+
+### Sort
+
+By default, the keys of the clean `package.json` will be sorted. Use `--no-sort` to disable this behaviour.
+
+### Dry-run
+
+Use `--dry-run` or `-n` to check how `package.json` will be modified. The cleaned `package.json` will be printed to stdout instead.
+
+### Indent
+
+By default, tabs are used for indentation. Use `--indent` to overwrite this.
+
 ## Prior Art
 
 [clean-package](https://github.com/roydukkey/clean-package) by [roydukkey](https://github.com/roydukkey)
