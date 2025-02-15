@@ -1,0 +1,32 @@
+{
+	"author": "melusc",
+	"bin": "dist/index.js",
+	"dependencies": {
+		"json-stable-stringify": "^1.2.1"
+	},
+	"files": [
+		"dist"
+	],
+	"engines": {
+		"node": "^22.14.0 || ^23.8.0"
+	},
+	"keywords": [
+		"package.json",
+		"publish",
+		"clean"
+	],
+	"license": "MIT",
+	"name": "@lusc/clean-package",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": "melusc/cli-interval",
+	"scripts": {
+		"fmt": "prettier -w . && eslint --fix",
+		"build": "tsc",
+		"prepublish": "yarn build"
+	},
+	"type": "module",
+	"version": "0.0.0",
+	"packageManager": "yarn@4.6.0"
+}
