@@ -4,6 +4,9 @@
 	"dependencies": {
 		"json-stable-stringify": "^1.2.1"
 	},
+	"devDependencies": {
+		"prettier": "^3.5.1"
+	},
 	"files": [
 		"dist"
 	],
