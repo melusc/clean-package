@@ -165,7 +165,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@lusc/clean-package@workspace:."
   dependencies:
-    "@lusc/eslint-config": "npm:^4.2.0"
+    "@lusc/eslint-config": "npm:^4.2.2"
     "@lusc/tsconfig": "npm:^6.0.2"
     "@types/node": "npm:^22.13.4"
     eslint: "npm:^9.20.1"
@@ -177,9 +177,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@lusc/eslint-config@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "@lusc/eslint-config@npm:4.2.0"
+"@lusc/eslint-config@npm:^4.2.2":
+  version: 4.2.2
+  resolution: "@lusc/eslint-config@npm:4.2.2"
   dependencies:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.4.1"
     "@eslint/js": "npm:^9.20.0"
@@ -195,7 +195,7 @@ __metadata:
     typescript-eslint: "npm:^8.24.0"
   peerDependencies:
     eslint: ^9.20.1
-  checksum: 10c0/f361f83d58fd29fcc1e14ddc862b8d1fd4c30e781dbcba7eccfe3dd6147892f6e8e815b683cb3ec182f0931d3f2dd730c5c8dc6bd5bc97e1f436358b6150b9a4
+  checksum: 10c0/249a6b63b576dc3d8108d73b6ae852662e42bb74fce8c3236edd324e99f8b87043f58f8ef921e75c5878aca7af91d74294d43487f2742d11bbcf4d555aa235d7
   languageName: node
   linkType: hard
 
