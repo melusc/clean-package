@@ -17,12 +17,11 @@ exports[`Options > indent=4 1`] = `
 }
 `;
 
-exports[`Options > paths=(all) 1`] = `
-{
-}
+exports[`Options > keys=(all) 1`] = `
+{}
 `;
 
-exports[`Options > paths=deep.a 1`] = `
+exports[`Options > keys=deep.a 1`] = `
 {
 	"deep": {
 		"d": false
@@ -34,7 +33,7 @@ exports[`Options > paths=deep.a 1`] = `
 }
 `;
 
-exports[`Options > paths=name 1`] = `
+exports[`Options > keys=name 1`] = `
 {
 	"deep": {
 		"a": {
