@@ -42,6 +42,12 @@ Use `--dry-run` or `-n` to check how `package.json` will be modified. The cleane
 
 By default, tabs are used for indentation. Use `--indent` to overwrite this.
 
+### Package
+
+By default, the `package.json` in the current directory is modified. Pass a different directory to `--package` or `-p` if the `package.json` isn't found in the current directory.
+
+If the file to be modified isn't called `package.json` pass the path to the file to `--package` and it will just as well.
+
 ## Prior Art
 
 [clean-package](https://github.com/roydukkey/clean-package) by [roydukkey](https://github.com/roydukkey)

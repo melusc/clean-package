@@ -173,7 +173,7 @@ __metadata:
     prettier: "npm:^3.5.1"
     typescript: "npm:^5.7.3"
   bin:
-    clean-package: dist/index.js
+    clean-package: dist/cli.js
   languageName: unknown
   linkType: soft
 

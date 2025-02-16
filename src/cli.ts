@@ -1,5 +1,7 @@
-import {exit} from 'node:process';
+import {cwd, exit} from 'node:process';
 import {parseArgs} from 'node:util';
+
+import {cleanPackage} from './library.ts';
 
 const {positionals, values} = parseArgs({
 	allowNegative: true,
@@ -19,6 +21,11 @@ const {positionals, values} = parseArgs({
 			short: 's',
 			default: true,
 		},
+		package: {
+			type: 'string',
+			short: 'p',
+			default: cwd(),
+		},
 		help: {
 			type: 'boolean',
 			short: 'h',
@@ -36,13 +43,22 @@ if (values.help) {
                        \\t or an integer (default \\t)
         -n, --dry-run  Print cleaned package.json without overwriting it.
         -s, --sort     Sort properties in package.json (default true)
+        -p, --package  Path to package.json or directory with package.json
+                       Defaults to current directory
         -h, --help     Display help-text
 
     Examples:
 
         clean-package devDependencies scripts
+
+        # only remove build-script
         clean-package scripts.build
+
+        # indent with two spaces and don't sort
         clean-package --indent 2 --no-sort devDependencies
+
+        clean-package --package path/to/package.json
+
         clean-package --help
 
     MIT (c) Luca Schnellmann, 2025
@@ -63,10 +79,14 @@ if (values.indent === '\t' || values.indent === String.raw`\t`) {
 	);
 }
 
-const options = {
+const output = await cleanPackage({
 	sort: values.sort,
 	indent,
+	packageJson: values.package,
+	paths: positionals.map(s => s.split('.')),
 	dryRun: values['dry-run'],
-} as const;
+});
 
-export {options, positionals};
+if (values['dry-run']) {
+	console.log(output);
+}
