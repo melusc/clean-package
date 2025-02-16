@@ -1,0 +1,124 @@
+exports[`Options > indent=0 1`] = `
+{"deep":{"a":{"b":"c"},"d":false},"name":"fixture","scripts":{"abc":"def"}}
+`;
+
+exports[`Options > indent=4 1`] = `
+{
+    "deep": {
+        "a": {
+            "b": "c"
+        },
+        "d": false
+    },
+    "name": "fixture",
+    "scripts": {
+        "abc": "def"
+    }
+}
+`;
+
+exports[`Options > paths=(all) 1`] = `
+{
+}
+`;
+
+exports[`Options > paths=deep.a 1`] = `
+{
+	"deep": {
+		"d": false
+	},
+	"name": "fixture",
+	"scripts": {
+		"abc": "def"
+	}
+}
+`;
+
+exports[`Options > paths=name 1`] = `
+{
+	"deep": {
+		"a": {
+			"b": "c"
+		},
+		"d": false
+	},
+	"scripts": {
+		"abc": "def"
+	}
+}
+`;
+
+exports[`Options > sort=false 1`] = `
+{
+	"deep": {
+		"a": {
+			"b": "c"
+		},
+		"d": false
+	},
+	"scripts": {
+		"abc": "def"
+	},
+	"name": "fixture"
+}
+`;
+
+exports[`Options > sort=true 1`] = `
+{
+	"deep": {
+		"a": {
+			"b": "c"
+		},
+		"d": false
+	},
+	"name": "fixture",
+	"scripts": {
+		"abc": "def"
+	}
+}
+`;
+
+exports[`Passing directory > String 1`] = `
+{
+	"deep": {
+		"a": {
+			"b": "c"
+		},
+		"d": false
+	},
+	"name": "fixture",
+	"scripts": {
+		"abc": "def"
+	}
+}
+`;
+
+exports[`Passing directory > URL 1`] = `
+{
+	"deep": {
+		"a": {
+			"b": "c"
+		},
+		"d": false
+	},
+	"name": "fixture",
+	"scripts": {
+		"abc": "def"
+	}
+}
+`;
+
+exports[`Passing path to file > package.json exists 1`] = `
+{
+	"deep": {
+		"a": {
+			"b": "c"
+		},
+		"d": false
+	},
+	"name": "fixture",
+	"scripts": {
+		"abc": "def"
+	}
+}
+`;

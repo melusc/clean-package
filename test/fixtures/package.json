@@ -1,0 +1,12 @@
+{
+	"deep": {
+		"a": {
+			"b": "c"
+		},
+		"d": false
+	},
+	"scripts": {
+		"abc": "def"
+	},
+	"name": "fixture"
+}

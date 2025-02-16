@@ -32,7 +32,8 @@
 	},
 	"scripts": {
 		"fmt": "prettier -w . && eslint --fix",
-		"build": "tsc"
+		"build": "tsc -p tsconfig.build.json",
+		"test": "node --test"
 	},
 	"type": "module",
 	"version": "1.0.0",
