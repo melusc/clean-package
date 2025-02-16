@@ -22,7 +22,7 @@ function removePath(path: string[], object: Record<string, unknown>) {
 		const pathStringified = ['(root)', ...path.slice(0, index)].join('.');
 
 		if (!Object.hasOwn(object, key)) {
-			throw new Error(`${pathStringified} does not have property "${key}".`);
+			throw new Error(`package.json does not have property "${path.slice(0, index + 1).join('.')}".`);
 		}
 
 		const newObject = object[key];
@@ -38,8 +38,15 @@ function removePath(path: string[], object: Record<string, unknown>) {
 		++index;
 	}
 
+	const key = path[index]!;
+	// Check if key exists before deleting. Technically not necessary
+	// Useful to warn about misspelled keys
+	if (!Object.hasOwn(object, key)) {
+		throw new Error(`package.json does not have property "${path.join('.')}".`);
+	}
+	
 	// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-	delete object[path[index]!];
+	delete object[key];
 }
 
 let inputPackageJsonRaw: string;
