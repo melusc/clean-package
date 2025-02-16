@@ -83,7 +83,7 @@ const output = await cleanPackage({
 	sort: values.sort,
 	indent,
 	packageJson: values.package,
-	paths: positionals.map(s => s.split('.')),
+	keys: positionals.map(s => s.split('.')),
 	dryRun: values['dry-run'],
 });
 

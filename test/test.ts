@@ -14,7 +14,7 @@ await test('Passing directory', async () => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: fixtureDirectory,
-				paths: [],
+				keys: [],
 				dryRun: true,
 			}),
 			{serializers},
@@ -25,7 +25,7 @@ await test('Passing directory', async () => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: fileURLToPath(fixtureDirectory),
-				paths: [],
+				keys: [],
 				dryRun: true,
 			}),
 			{serializers},
@@ -36,7 +36,7 @@ await test('Passing directory', async () => {
 		try {
 			await cleanPackage({
 				packageJson: new URL('./', import.meta.url),
-				paths: [],
+				keys: [],
 			});
 			t.assert.fail();
 		} catch (error: unknown) {
@@ -50,7 +50,7 @@ await test('Passing path to file', async () => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
-				paths: [],
+				keys: [],
 				dryRun: true,
 			}),
 			{serializers},
@@ -61,7 +61,7 @@ await test('Passing path to file', async () => {
 		try {
 			await cleanPackage({
 				packageJson: new URL('package.json', import.meta.url),
-				paths: [],
+				keys: [],
 			});
 
 			t.assert.fail();
@@ -76,7 +76,7 @@ await test('Options', async () => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
-				paths: [],
+				keys: [],
 				dryRun: true,
 				sort: false,
 			}),
@@ -88,7 +88,7 @@ await test('Options', async () => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
-				paths: [],
+				keys: [],
 				dryRun: true,
 			}),
 			{serializers},
@@ -99,7 +99,7 @@ await test('Options', async () => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
-				paths: [],
+				keys: [],
 				dryRun: true,
 				indent: 0,
 			}),
@@ -111,7 +111,7 @@ await test('Options', async () => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
-				paths: [],
+				keys: [],
 				dryRun: true,
 				indent: 4,
 			}),
@@ -119,33 +119,33 @@ await test('Options', async () => {
 		);
 	});
 
-	await test('paths=name', async t => {
+	await test('keys=name', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
-				paths: [['name']],
+				keys: [['name']],
 				dryRun: true,
 			}),
 			{serializers},
 		);
 	});
 
-	await test('paths=deep.a', async t => {
+	await test('keys=deep.a', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
-				paths: [['deep', 'a']],
+				keys: [['deep', 'a']],
 				dryRun: true,
 			}),
 			{serializers},
 		);
 	});
 
-	await test('paths=(all)', async t => {
+	await test('keys=(all)', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
-				paths: [['deep'], ['name'], ['scripts']],
+				keys: [['deep'], ['name'], ['scripts']],
 				dryRun: true,
 			}),
 			{serializers},

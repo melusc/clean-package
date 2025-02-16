@@ -6,7 +6,7 @@ import stableStringify from 'json-stable-stringify';
 
 type Options = {
 	readonly packageJson: string | URL;
-	readonly paths: readonly (readonly string[])[];
+	readonly keys: readonly (readonly string[])[];
 	readonly indent?: string | number | undefined;
 	readonly sort?: boolean | undefined;
 	readonly dryRun?: boolean | undefined;
@@ -23,8 +23,8 @@ export async function cleanPackage(options: Options): Promise<string> {
 		unknown
 	>;
 
-	for (const path of options.paths) {
-		removePath(path, packageJson, packageJsonPath);
+	for (const keyPath of options.keys) {
+		removePath(keyPath, packageJson, packageJsonPath);
 	}
 
 	const outPackageJsonStringified = shouldSort
@@ -59,20 +59,24 @@ async function resolvePackageJson(packagePath: string | URL) {
 	return resolvePackageJson(path.join(packagePath, 'package.json'));
 }
 
-function removePath(path: readonly string[], object: Record<string, unknown>, filePath: string) {
-	if (path.length === 0) {
+function removePath(
+	keyPath: readonly string[],
+	object: Record<string, unknown>,
+	filePath: string,
+) {
+	if (keyPath.length === 0) {
 		throw new Error('path cannot be empty.');
 	}
 
 	let index = 0;
 
-	while (index < path.length - 1) {
-		const key = path[index]!;
-		const pathStringified = ['(root)', ...path.slice(0, index)].join('.');
+	while (index < keyPath.length - 1) {
+		const key = keyPath[index]!;
+		const pathStringified = ['(root)', ...keyPath.slice(0, index)].join('.');
 
 		if (!Object.hasOwn(object, key)) {
 			throw new Error(
-				`${filePath} does not have property "${path.slice(0, index + 1).join('.')}".`,
+				`${filePath} does not have property "${keyPath.slice(0, index + 1).join('.')}".`,
 			);
 		}
 
@@ -82,18 +86,22 @@ function removePath(path: readonly string[], object: Record<string, unknown>, fi
 			newObject === null ||
 			Array.isArray(newObject)
 		) {
-			throw new Error(`${filePath}: ${pathStringified}.${key} is not an object.`);
+			throw new Error(
+				`${filePath}: ${pathStringified}.${key} is not an object.`,
+			);
 		}
 
 		object = newObject as Record<string, unknown>;
 		++index;
 	}
 
-	const key = path[index]!;
+	const key = keyPath[index]!;
 	// Check if key exists before deleting. Technically not necessary
 	// Useful to warn about misspelled keys
 	if (!Object.hasOwn(object, key)) {
-		throw new Error(`${filePath} does not have property "${path.join('.')}".`);
+		throw new Error(
+			`${filePath} does not have property "${keyPath.join('.')}".`,
+		);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
