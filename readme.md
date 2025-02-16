@@ -26,6 +26,8 @@ npm publish
 git checkout HEAD -- package.json
 ```
 
+See my [publish.yml](https://github.com/melusc/clean-package/blob/main/.github/workflows/publish.yml#L22) Github Actions workflow to see how I use this package.
+
 ## Options
 
 ### Sort
