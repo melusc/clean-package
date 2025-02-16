@@ -48,6 +48,45 @@ By default, the `package.json` in the current directory is modified. Pass a diff
 
 If the file to be modified isn't called `package.json` pass the path to the file to `--package` and it will just as well.
 
+## Library
+
+`@lusc/clean-package` can be used as a library too. Simply import it as so:
+
+```typescript
+import {cleanPackage} from '@lusc/clean-package';
+```
+
+### Typing
+
+```typescript
+function cleanPackage(options: {
+	// Path to package.json or the directory containing it
+	// required
+	packageJson: string | URL;
+
+	// Keys to remove from package.json
+	// e.g. `keys: [['devDependencies'], ['scripts']]`
+	// Supports nested keys, e.g. [['scripts', 'test']] -> delete packageJson.scripts.test
+	// required
+	keys: string[][];
+
+	// Indentation to use. Same usage as with `JSON.stringify`
+	// default `\t`
+	indent?: string | number;
+
+	// Sort output using `json-stable-stringify`
+	// default true
+	sort?: boolean;
+
+	// Don't write result to file
+	// default false
+	dryRun?: boolean;
+
+	// Why a string? Ensure that the returned result is identical
+	// to the written result, namely the sorting and indentation
+}): Promise<string>;
+```
+
 ## Prior Art
 
 [clean-package](https://github.com/roydukkey/clean-package) by [roydukkey](https://github.com/roydukkey)
