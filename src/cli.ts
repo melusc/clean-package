@@ -1,4 +1,4 @@
-import {cwd, exit} from 'node:process';
+import {exit} from 'node:process';
 import {parseArgs} from 'node:util';
 
 import {cleanPackage} from './library.ts';
@@ -24,7 +24,7 @@ const {positionals, values} = parseArgs({
 		package: {
 			type: 'string',
 			short: 'p',
-			default: cwd(),
+			default: '.',
 		},
 		help: {
 			type: 'boolean',
