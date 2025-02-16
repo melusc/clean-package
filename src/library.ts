@@ -2,8 +2,6 @@ import {readFile, stat, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
-import stableStringify from 'json-stable-stringify';
-
 type Options = {
 	readonly packageJson: string | URL;
 	readonly keys: readonly (readonly string[])[];
@@ -28,9 +26,7 @@ export async function cleanPackage(options: Options): Promise<string> {
 	}
 
 	const outPackageJsonStringified = shouldSort
-		? stableStringify(packageJson, {
-				space: indent,
-			})!
+		? jsonStringifySorted(packageJson, indent)
 		: JSON.stringify(packageJson, undefined, indent);
 
 	if (!dryRun) {
@@ -106,4 +102,21 @@ function removePath(
 
 	// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 	delete object[key];
+}
+
+function jsonStringifySorted(object: unknown, indent: string | number) {
+	return JSON.stringify(
+		object,
+		(_key, value: unknown) => {
+			if (typeof value !== 'object' || Array.isArray(value) || value === null) {
+				return value;
+			}
+
+			const object = value as Record<string, unknown>;
+			const keys = Object.keys(object).sort();
+
+			return Object.fromEntries(keys.map(key => [key, object[key]]));
+		},
+		indent,
+	);
 }

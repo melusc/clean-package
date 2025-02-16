@@ -1,9 +1,6 @@
 {
 	"author": "melusc",
 	"bin": "dist/cli.js",
-	"dependencies": {
-		"json-stable-stringify": "^1.2.1"
-	},
 	"devDependencies": {
 		"@lusc/eslint-config": "^4.2.0",
 		"@lusc/tsconfig": "^6.0.2",
