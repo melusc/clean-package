@@ -74,7 +74,7 @@ function cleanPackage(options: {
 	// default `\t`
 	indent?: string | number;
 
-	// Sort output using `json-stable-stringify`
+	// Sort keys (sorts deeply)
 	// default true
 	sort?: boolean;
 
