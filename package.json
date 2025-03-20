@@ -2,7 +2,7 @@
 	"author": "melusc",
 	"bin": "dist/cli.js",
 	"devDependencies": {
-		"@lusc/eslint-config": "^6.2.0",
+		"@lusc/eslint-config": "^7.1.0",
 		"@lusc/tsconfig": "^6.0.2",
 		"@types/node": "^22.13.10",
 		"eslint": "^9.22.0",
