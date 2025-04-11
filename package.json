@@ -4,10 +4,10 @@
 	"devDependencies": {
 		"@lusc/eslint-config": "^7.1.0",
 		"@lusc/tsconfig": "^6.0.2",
-		"@types/node": "^22.13.10",
-		"eslint": "^9.22.0",
+		"@types/node": "^22.14.1",
+		"eslint": "^9.24.0",
 		"prettier": "^3.5.3",
-		"typescript": "^5.8.2"
+		"typescript": "^5.8.3"
 	},
 	"files": [
 		"dist"
@@ -34,5 +34,5 @@
 	},
 	"type": "module",
 	"version": "2.1.1",
-	"packageManager": "yarn@4.7.0"
+	"packageManager": "yarn@4.9.0"
 }
