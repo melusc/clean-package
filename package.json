@@ -3,7 +3,7 @@
 	"bin": "dist/cli.js",
 	"devDependencies": {
 		"@lusc/eslint-config": "^7.1.0",
-		"@lusc/tsconfig": "^6.0.2",
+		"@lusc/tsconfig": "^7.0.0",
 		"@types/node": "^22.14.1",
 		"eslint": "^9.24.0",
 		"prettier": "^3.5.3",
