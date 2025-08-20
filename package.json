@@ -33,6 +33,6 @@
 		"test": "node --test"
 	},
 	"type": "module",
-	"version": "2.1.1",
+	"version": "2.2.0",
 	"packageManager": "yarn@4.9.2"
 }
