@@ -2,10 +2,10 @@
 	"author": "melusc",
 	"bin": "dist/cli.js",
 	"devDependencies": {
-		"@lusc/eslint-config": "^7.4.1",
-		"@lusc/tsconfig": "^7.0.0",
-		"@types/node": "^22.17.1",
-		"eslint": "^9.33.0",
+		"@lusc/eslint-config": "^7.4.2",
+		"@lusc/tsconfig": "^7.1.0",
+		"@types/node": "^22.18.0",
+		"eslint": "^9.34.0",
 		"prettier": "^3.6.2",
 		"typescript": "^5.9.2"
 	},
@@ -34,5 +34,5 @@
 	},
 	"type": "module",
 	"version": "2.2.0",
-	"packageManager": "yarn@4.9.2"
+	"packageManager": "yarn@4.9.4"
 }
