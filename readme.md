@@ -7,6 +7,7 @@ This tool is intentionally minimal. Use git to restore the original `package.jso
 ## Installation
 
 ```bash
+npm install -D @lusc/clean-package
 yarn add -D @lusc/clean-package
 ```
 
