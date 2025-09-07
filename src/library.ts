@@ -116,7 +116,7 @@ function jsonStringifySorted(object: unknown, indent: string | number) {
 			}
 
 			const object = value as Record<string, unknown>;
-			const keys = Object.keys(object).sort();
+			const keys = Object.keys(object).toSorted();
 
 			return Object.fromEntries(keys.map(key => [key, object[key]]));
 		},
