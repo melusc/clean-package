@@ -35,12 +35,12 @@ const {positionals, values} = parseArgs({
 });
 
 if (values.help) {
-	console.log(`
+	console.log(String.raw`
     clean-package [options] [...properties]
 
     Options:
         --indent       Indentation used for package.json.
-                       \\t or an integer (default \\t)
+                       \t or an integer (default \t)
         -n, --dry-run  Print cleaned package.json without overwriting it.
         -s, --sort     Sort properties in package.json (default true)
         -p, --package  Path to package.json or directory with package.json
@@ -75,7 +75,7 @@ if (values.indent === '\t' || values.indent === String.raw`\t`) {
 	indent = indentNumber;
 } else {
 	throw new Error(
-		`Invalid --indent. Expected \\t or integer, got ${values.indent}.`,
+		String.raw`Invalid --indent. Expected \t or integer, got ${values.indent}.`,
 	);
 }
 
