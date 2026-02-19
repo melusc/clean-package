@@ -15,7 +15,6 @@ export async function cleanPackage(options: Options): Promise<string> {
 	const dryRun = options.dryRun ?? false;
 	const packageJsonPath = await resolvePackageJson(options.packageJson);
 
-	// eslint-disable-next-line security/detect-non-literal-fs-filename
 	const inputPackageJsonRaw = await readFile(packageJsonPath, 'utf8');
 	const packageJson = JSON.parse(inputPackageJsonRaw) as Record<
 		string,
@@ -31,7 +30,6 @@ export async function cleanPackage(options: Options): Promise<string> {
 		: JSON.stringify(packageJson, undefined, indent);
 
 	if (!dryRun) {
-		// eslint-disable-next-line security/detect-non-literal-fs-filename
 		await writeFile(packageJsonPath, outPackageJsonStringified);
 	}
 
@@ -48,7 +46,6 @@ async function resolvePackageJson(packagePath: string | URL) {
 
 	packagePath = path.normalize(packagePath);
 
-	// eslint-disable-next-line security/detect-non-literal-fs-filename
 	const packageStat = await stat(packagePath);
 
 	if (packageStat.isFile()) {
