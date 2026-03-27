@@ -1,7 +1,7 @@
 {
-	"extends": "@lusc/tsconfig",
+	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"rewriteRelativeImportExtensions": true
+		"rootDir": "./src"
 	},
 	"include": ["src/*"]
 }

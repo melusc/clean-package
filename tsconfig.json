@@ -1,7 +1,9 @@
 {
 	"extends": "@lusc/tsconfig",
 	"compilerOptions": {
-		"rewriteRelativeImportExtensions": true
+		"rewriteRelativeImportExtensions": true,
+		"types": ["node"],
+		"rootDir": "."
 	},
 	"include": ["src/*", "test/*"]
 }
