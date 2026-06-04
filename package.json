@@ -33,6 +33,6 @@
 		"test": "node --test"
 	},
 	"type": "module",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"packageManager": "pnpm@11.5.0"
 }
