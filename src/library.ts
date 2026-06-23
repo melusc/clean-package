@@ -41,18 +41,25 @@ export async function cleanPackage(options: Options): Promise<string> {
 // or it is the directory with the package.json
 async function resolvePackageJson(packagePath: string | URL) {
 	if (typeof packagePath !== 'string') {
-		return resolvePackageJson(fileURLToPath(packagePath));
+		packagePath = fileURLToPath(packagePath);
 	}
 
 	packagePath = path.normalize(packagePath);
 
-	const packageStat = await stat(packagePath);
+	let packageStat = await stat(packagePath);
 
 	if (packageStat.isFile()) {
 		return packagePath;
 	}
 
-	return resolvePackageJson(path.join(packagePath, 'package.json'));
+	packagePath = path.join(packagePath, 'package.json');
+
+	packageStat = await stat(packagePath);
+	if (packageStat.isFile()) {
+		return packagePath;
+	}
+
+	throw new Error('Could not find package.json.');
 }
 
 function removePath(
@@ -68,14 +75,13 @@ function removePath(
 
 	while (index < keyPath.length - 1) {
 		const key = keyPath[index]!;
-		const pathStringified = ['(root)', ...keyPath.slice(0, index)].join('.');
-
 		if (!Object.hasOwn(object, key)) {
 			throw new Error(
 				`${filePath} does not have property "${keyPath.slice(0, index + 1).join('.')}".`,
 			);
 		}
 
+		const pathStringified = ['(root)', ...keyPath.slice(0, index)].join('.');
 		const newObject = object[key];
 		if (
 			typeof newObject !== 'object' ||
@@ -104,6 +110,11 @@ function removePath(
 	delete object[key];
 }
 
+const collator = new Intl.Collator('en-GB', {
+	numeric: true,
+	sensitivity: 'base',
+});
+
 function jsonStringifySorted(object: unknown, indent: string | number) {
 	return JSON.stringify(
 		object,
@@ -113,7 +124,7 @@ function jsonStringifySorted(object: unknown, indent: string | number) {
 			}
 
 			const object = value as Record<string, unknown>;
-			const keys = Object.keys(object).toSorted();
+			const keys = Object.keys(object).toSorted(collator.compare);
 
 			return Object.fromEntries(keys.map(key => [key, object[key]]));
 		},
