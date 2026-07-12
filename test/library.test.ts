@@ -9,8 +9,8 @@ const packageFixture = new URL('package.json', fixtureDirectory);
 // cleanPackage returns a string so no need to serialise
 const serializers = [(t: unknown) => t];
 
-await test('Passing directory', async () => {
-	await test('URL', async t => {
+await test('Passing directory', async t => {
+	await t.test('URL', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: fixtureDirectory,
@@ -21,7 +21,7 @@ await test('Passing directory', async () => {
 		);
 	});
 
-	await test('String', async t => {
+	await t.test('String', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: fileURLToPath(fixtureDirectory),
@@ -32,21 +32,18 @@ await test('Passing directory', async () => {
 		);
 	});
 
-	await test('Non-existant directory', async t => {
-		try {
+	await t.test('Non-existant directory', async t => {
+		await t.assert.rejects(async () => {
 			await cleanPackage({
 				packageJson: new URL('./', import.meta.url),
 				keys: [],
 			});
-			t.assert.fail();
-		} catch (error: unknown) {
-			t.assert.match((error as Error).message, /enoent/i);
-		}
+		}, /enoent/i);
 	});
 });
 
-await test('Passing path to file', async () => {
-	await test('package.json exists', async t => {
+await test('Passing path to file', async t => {
+	await t.test('package.json exists', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
@@ -57,22 +54,18 @@ await test('Passing path to file', async () => {
 		);
 	});
 
-	await test('Non-existant file', async t => {
-		try {
+	await t.test('Non-existant file', async t => {
+		await t.assert.rejects(async () => {
 			await cleanPackage({
 				packageJson: new URL('package.json', import.meta.url),
 				keys: [],
 			});
-
-			t.assert.fail();
-		} catch (error: unknown) {
-			t.assert.match((error as Error).message, /enoent/i);
-		}
+		}, /enoent/i);
 	});
 });
 
-await test('Options', async () => {
-	await test('sort=false', async t => {
+await test('Options', async t => {
+	await t.test('sort=false', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
@@ -84,7 +77,7 @@ await test('Options', async () => {
 		);
 	});
 
-	await test('sort=true', async t => {
+	await t.test('sort=true', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
@@ -95,7 +88,7 @@ await test('Options', async () => {
 		);
 	});
 
-	await test('indent=0', async t => {
+	await t.test('indent=0', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
@@ -107,7 +100,7 @@ await test('Options', async () => {
 		);
 	});
 
-	await test('indent=4', async t => {
+	await t.test('indent=4', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
@@ -119,7 +112,7 @@ await test('Options', async () => {
 		);
 	});
 
-	await test('keys=name', async t => {
+	await t.test('keys=name', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
@@ -130,7 +123,7 @@ await test('Options', async () => {
 		);
 	});
 
-	await test('keys=deep.a', async t => {
+	await t.test('keys=deep.a', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
@@ -141,7 +134,7 @@ await test('Options', async () => {
 		);
 	});
 
-	await test('keys=(all)', async t => {
+	await t.test('keys=(all)', async t => {
 		t.assert.snapshot(
 			await cleanPackage({
 				packageJson: packageFixture,
