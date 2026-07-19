@@ -119,7 +119,7 @@ function jsonStringifySorted(object: unknown, indent: string | number) {
 	return JSON.stringify(
 		object,
 		(_key, value: unknown) => {
-			if (typeof value !== 'object' || Array.isArray(value) || value === null) {
+			if (value === null || typeof value !== 'object' || Array.isArray(value)) {
 				return value;
 			}
 
