@@ -81,7 +81,10 @@ if (values.help) {
 
         clean-package --help
 
-    MIT (c) Luca Schnellmann, 2025
+    License:
+        Copyright (C) 2025-2026 by Luca Schnellmann
+        @lusc/clean-package is distributed under the GNU General Public License.
+        See the file COPYING for details.
 `);
 
 	exit(0);
