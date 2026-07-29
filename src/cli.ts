@@ -18,6 +18,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import {createRequire} from 'node:module';
 import {exit} from 'node:process';
 import {parseArgs} from 'node:util';
 
@@ -51,6 +52,11 @@ const {positionals, values} = parseArgs({
 			short: 'h',
 			default: false,
 		},
+		version: {
+			type: 'boolean',
+			short: 'v',
+			default: false,
+		},
 	},
 });
 
@@ -65,7 +71,8 @@ if (values.help) {
         -s, --sort     Sort properties in package.json (default true)
         -p, --package  Path to package.json or directory with package.json
                        Defaults to current directory
-        -h, --help     Display help-text
+        -h, --help     Display help-text and exit
+        -v, --version  Print version and exit
 
     Examples:
 
@@ -87,6 +94,15 @@ if (values.help) {
         See the file COPYING for details.
 `);
 
+	exit(0);
+}
+
+if (values.version) {
+	const require = createRequire(import.meta.url);
+
+	const packageJson = require('../package.json') as {version: string};
+
+	console.log(packageJson.version);
 	exit(0);
 }
 
