@@ -33,6 +33,18 @@ exports[`Options > keys=deep.a 1`] = `
 }
 `;
 
+exports[`Options > keys=deep.a.b 1`] = `
+{
+	"deep": {
+		"d": false
+	},
+	"name": "fixture",
+	"scripts": {
+		"abc": "def"
+	}
+}
+`;
+
 exports[`Options > keys=name 1`] = `
 {
 	"deep": {

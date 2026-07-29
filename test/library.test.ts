@@ -154,6 +154,17 @@ await test('Options', async t => {
 		);
 	});
 
+	await t.test('keys=deep.a.b', async t => {
+		t.assert.snapshot(
+			await cleanPackage({
+				packageJson: packageFixture,
+				keys: [['deep', 'a', 'b']],
+				dryRun: true,
+			}),
+			{serializers},
+		);
+	});
+
 	await t.test('keys=(all)', async t => {
 		t.assert.snapshot(
 			await cleanPackage({

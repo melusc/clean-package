@@ -135,9 +135,9 @@ const collator = new Intl.Collator('en-GB', {
 	sensitivity: 'base',
 });
 
-function jsonStringifySorted(object: unknown, indent: string | number) {
+function jsonStringifySorted(rootObject: unknown, indent: string | number) {
 	return JSON.stringify(
-		object,
+		rootObject,
 		(_key, value: unknown) => {
 			if (value === null || typeof value !== 'object' || Array.isArray(value)) {
 				return value;
@@ -145,6 +145,11 @@ function jsonStringifySorted(object: unknown, indent: string | number) {
 
 			const object = value as Record<string, unknown>;
 			const keys = Object.keys(object).toSorted(collator.compare);
+
+			// Prune empty objects, except root object
+			if (object !== rootObject && keys.length === 0) {
+				return;
+			}
 
 			return Object.fromEntries(keys.map(key => [key, object[key]]));
 		},
