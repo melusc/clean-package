@@ -21,7 +21,7 @@
 		"publish",
 		"clean"
 	],
-	"license": "MIT",
+	"license": "GPL-3.0-or-later",
 	"name": "@lusc/clean-package",
 	"repository": {
 		"type": "git",
