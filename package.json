@@ -2,10 +2,10 @@
 	"author": "melusc",
 	"bin": "dist/cli.js",
 	"devDependencies": {
-		"@lusc/eslint-config": "^18.1.0",
+		"@lusc/eslint-config": "^18.2.0",
 		"@lusc/tsconfig": "^7.2.1",
 		"@types/node": "^24.13.3",
-		"eslint": "^10.9.0",
+		"eslint": "^10.9.1",
 		"prettier": "^3.9.6",
 		"typescript": "^7.0.2"
 	},
