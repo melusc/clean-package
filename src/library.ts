@@ -147,11 +147,9 @@ function jsonStringifySorted(rootObject: unknown, indent: string | number) {
 			const keys = Object.keys(object).toSorted(collator.compare);
 
 			// Prune empty objects, except root object
-			if (object !== rootObject && keys.length === 0) {
-				return;
-			}
-
-			return Object.fromEntries(keys.map(key => [key, object[key]]));
+			return object !== rootObject && keys.length === 0
+				? undefined
+				: Object.fromEntries(keys.map(key => [key, object[key]]));
 		},
 		indent,
 	);
