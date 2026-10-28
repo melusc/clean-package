@@ -4,7 +4,7 @@
 	"devDependencies": {
 		"@lusc/eslint-config": "^21.0.0",
 		"@lusc/tsconfig": "^7.2.1",
-		"@types/node": "^24.13.3",
+		"@types/node": "^26.6.5",
 		"eslint": "^10.9.1",
 		"prettier": "^3.9.6",
 		"typescript": "^7.0.2"
